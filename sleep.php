@@ -1,10 +1,12 @@
 <?php
+ob_start();
   date_default_timezone_set("CST6CDT");
   $currentDay = getdate()["weekday"];
 
   if(defined('STDIN') )
   {
     echo "Today is...\n";
+
     sleep(1);
     echo "$currentDay.\n";
     exit();
@@ -22,6 +24,8 @@
 <?php
 
   echo "<h1>Today is...</h1>";
+      ob_flush();
+    ob_clean();
   sleep(1);
   echo "<h2>$currentDay.</h2> \n";
 
@@ -30,6 +34,7 @@
     echo "No, <p>\n" .
          "Today is " . $currentDay . ".\n";
   }
+  ob_end_flush();
 
 ?>
 </body>
